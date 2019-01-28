@@ -8,9 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nelioalves.cursomc.domain.Categoria;
-import com.nelioalves.cursomc.domain.Cliente;
 import com.nelioalves.cursomc.dto.CategoriaDTO;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
 import com.nelioalves.cursomc.services.Exceptions.DataIntegrityException;
@@ -31,6 +31,7 @@ public class CategoriaService {
 		return obj;
 	}
 
+	@Transactional
 	public Categoria insert(Categoria obj){
 		obj.setId(null);
 		return repo.save(obj);
